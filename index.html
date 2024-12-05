@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автосалон BMW</title>
+<style>
+    /* Общий стиль */
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        background-color: #f0f0f0;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: #000;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+        height: 50px;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #ffcc00;
+    }
+
+    /* Главная страница */
+    .hero {
+        position: relative;
+        background: url('img/m5.jpg') no-repeat center center/cover;
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        filter: brightness(60%);
+    }
+
+    .hero h1 {
+        font-size: 64px;
+        margin-bottom: 20px;
+        text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+        font-size: 26px;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero button {
+        background-color: #ffcc00;
+        color: #fff;
+        padding: 16px 32px;
+        border: none;
+        border-radius: 8px;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .hero button:hover {
+        background-color: #ff9900;
+    }
+
+    /* Контейнер */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .feature {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .feature:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .feature h3 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 12px;
+    }
+
+    .feature p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .feature .price {
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffcc00;
+        margin: 10px 0;
+    }
+
+    .feature .buy-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+    }
+
+    .feature .buy-btn:hover {
+        background-color: #218838;
+    }
+
+    footer {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* Popup */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .popup h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .popup p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .popup button {
+        margin-top: 10px;
+        padding: 12px 25px;
+        background-color: #ffcc00;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .popup button:hover {
+        background-color: #ff9900;
+    }
+
+    .cancel {
+        background-color: #dc3545;
+    }
+
+    .cancel:hover {
+        background-color: #c82333;
+    }
+</style>
+
+          
+    </style>
+</head>
+<body>
+    <!-- Вставка элемента ауд<style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Вставка фона аудио */
+        audio {
+            display: none; /* Скрывает элемент аудио */
+        }
+
+        /* Стиль для кнопки */
+        button {
+            padding: 1px 1px;
+            font-size: 1px;
+            cursor: pointer;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px; /* Располагаем кнопку снизу */
+            left: 50%;
+            transform: translateX(-50%); /* Центрируем кнопку по горизонтали */
+            z-index: 1000; /* Обеспечиваем, что кнопка будет поверх всего */
+        button:hover {
+ио с музыкой -->
+    <audio id="background-audio" loop>
+        <source src="audio/aza.mp3" type="audio/mp3">
+        
+    </audio>
+
+    <!-- Кнопка для включения музыки -->
+    <button onclick="playAudio()">Включить музыку</button>
+
+    <script>
+        function playAudio() {
+            var audio = document.getElementById("background-audio");
+            audio.play(); // Начать воспроизведение
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <img src="https://via.placeholder.com/150x50?text=BMW" alt="BMW Logo">
+        <nav>
+            <a href="javascript:void(0);" onclick="showPage('home')">Главная</a>
+            <a href="javascript:void(0);" onclick="showPage('catalog')">Каталог</a>
+            <a href="javascript:void(0);" onclick="showPage('about')">О нас</a>
+            <a href="javascript:void(0);" onclick="showPage('contacts')">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Главная -->
+    <div id="home" class="page">
+        <div class="hero">
+            <div>
+                <h1>Добро пожаловать в BMW</h1>
+                <p>Мир инноваций, роскоши и передовых технологий</p>
+                <button onclick="showPage('catalog')">Посмотреть каталог</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Каталог -->
+      <div id="catalog" class="page hidden">
+        <div class="container">
+            <h2>Каталог автомобилей</h2>
+            <div class="features">
+                <!-- Серия X -->
+                <div class="feature">
+                    <img src="img/x5.jpg" alt="BMW X5">
+                    <h3>BMW X5</h3>
+                    <p>Мощный внедорожник с премиальной отделкой.</p>
+                    <p class="price">Цена: 10,000,000 Tenge</p>
+                    <button class="buy-btn" onclick="buyCar('BMW X5')">Купить</button>
+                </div>
+                <div class="feature">
+                    <img src="img/x7.jpg" alt="BMW X7">
+                    <h3>BMW X7</h3>
+                    <p>Самый большой и роскошный внедорожник BMW.</p>
+                    <p class="price">Цена: 15,000,000 Tenge</p>
+                    <button class="buy-btn" onclick="buyCar('BMW X7')">Купить</button>
+                </div>
+                <!-- Серия i -->
+                <div class="feature">
+                    <img src="img/i7.jpg" alt="BMW i7">
+                    <h3>BMW i7</h3>
+                    <p>Флагманский электрический седан с впечатляющей автономностью.</p>
+                    <p class="price">Цена: 20,000,000 Tenge</p>
+                    <button class="buy-btn" onclick="buyCar('BMW i7')">Купить</button>
+                </div>
+                <div class="feature">
+                    <img src="img/ix.jpg" alt="BMW iX">
+                    <h3>BMW iX</h3>
+                    <p>Электрический внедорожник будущего.</p>
+                    <p class="price">Цена: 18,000,000 Tenge</p>
+                    <button class="buy-btn" onclick="buyCar('BMW iX')">Купить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- О нас -->
+<div id="about" class="page hidden">
+    <div class="container">
+        <h2>О компании BMW</h2>
+        <p>BMW (Bayerische Motoren Werke AG) — это один из самых известных и уважаемых мировых производителей автомобилей и мотоциклов премиум-класса. Основанная в 1916 году в Мюнхене, Германия, компания за свою более чем вековую историю зарекомендовала себя как лидер в области автомобильных технологий и инноваций. Вдобавок к производству автомобилей, BMW также активно работает в сфере электрической мобильности, поддерживая глобальную тенденцию к устойчивому развитию и экологической ответственности.</p>
+
+        <p>Сегодня BMW Group включает в себя три главных бренда — BMW, MINI и Rolls-Royce — и производит широкий ассортимент продукции, от компактных городских автомобилей до мощных спортивных моделей и роскошных автомобилей для бизнесменов и лидеров индустрий. Каждый автомобиль, произведенный под маркой BMW, сочетает в себе уникальный стиль, передовые технологии, высочайшее качество и неповторимое удовольствие от вождения.</p>
+
+        <h3>История BMW: от авиации до лидерства в автомобилестроении</h3>
+        <p>Компания BMW была основана в 1916 году, однако ее путь начался с производства авиационных двигателей, что символизирует стремление компании к инновациям с самого начала. После Первой мировой войны компания была вынуждена свернуть производство авиационных двигателей, и в 1923 году BMW начала выпускать мотоциклы, а в 1928 году приступила к производству автомобилей.</p>
+
+        <p>В 1936 году BMW представила свой первый массовый легковой автомобиль, модель 328 Roadster, который стал иконой в мире спортивных автомобилей благодаря своим выдающимся характеристикам. В послевоенные годы компания прошла через сложные экономические трудности, но в 1960-е годы BMW начала активно развиваться, получив признание за качество и стиль своей продукции. В 1972 году был представлен спортивный седан BMW 3 серии, который стал одной из самых успешных моделей в истории компании.</p>
+
+        <h3>Миссия и ценности компании</h3>
+        <p>Миссия BMW — это не просто производство автомобилей, а создание инновационных решений для перемещения людей в будущее. Компания ориентирована на создание автомобилей, которые сочетают в себе динамичное вождение, высочайший комфорт и современное технологическое оснащение, соответствующее самым строгим экологическим стандартам. BMW активно внедряет инновации в области электрической и автономной мобильности, чтобы стать лидером в производстве экологичных автомобилей будущего.</p>
+
+        <p>Кроме того, компания BMW всегда ставила перед собой задачу улучшения качества жизни людей, предлагая им автомобили, которые удовлетворяют их самые высокие требования в области безопасности, комфорта и удобства. В этом контексте BMW активно разрабатывает новые технологии, такие как искусственный интеллект, автопилот, а также адаптивные системы помощи водителю.</p>
+
+        <h3>Приверженность экологии и устойчивому развитию</h3>
+        <p>Одним из важнейших направлений деятельности BMW является развитие экологически чистых технологий. В 2013 году компания представила первую в мире серийную модель с электрическим приводом — BMW i3. Этот автомобиль стал символом нового подхода в автомобильной промышленности, сочетая в себе высокие экологические стандарты и передовые технологии.</p>
+
+        <p>BMW продолжает развивать линию электромобилей и гибридных моделей. Например, BMW iX3 — это полностью электрический внедорожник, который сочетает в себе высокую производительность и улучшенные экологические характеристики. BMW также активно инвестирует в развитие сетевой инфраструктуры для зарядки электромобилей и стремится обеспечить максимально удобные условия для владельцев электрокаров.</p>
+
+        <h3>Инновации и технологии: Путь к будущему</h3>
+        <p>Компания BMW всегда была пионером в сфере автомобильных технологий. В последние годы она активно разрабатывает системы автономного вождения, а также различные функции искусственного интеллекта, которые могут значительно повысить безопасность и удобство вождения. В 2020 году BMW представила прототип беспилотного автомобиля, который может управлять автомобилем в условиях городского трафика, улучшая при этом безопасность на дорогах.</p>
+
+        <p>Также BMW активно использует цифровые технологии для улучшения пользовательского опыта. В последние годы внедрены системы управления автомобилем через смартфоны, системы интеллектуальной навигации и обновления ПО по воздуху. Эти технологии делают автомобили BMW не просто транспортным средством, но и полноценным цифровым устройством, готовым к внедрению новых инновационных решений.</p>
+
+        <h3>Будущее компании</h3>
+        <p>BMW продолжает стремиться к лидерству в области экологически чистых и высокотехнологичных автомобилей. В ближайшие годы компания планирует увеличить производство электрических моделей и продолжить разработку новых технологий автономного вождения. BMW намерена увеличить свою долю на рынке электромобилей, предлагая доступные и высококачественные электрокары для широкой аудитории.</p>
+
+        <p>BMW также продолжит инвестировать в разработку новых материалов, которые помогут сделать автомобили еще более легкими и безопасными, а также усовершенствовать технологии для оптимизации производственного процесса. Главным приоритетом компании будет оставаться качество, инновации и приверженность к экологически чистым технологиям.</p>
+
+        <h3>Признание и достижения BMW</h3>
+        <p>В течение своей истории BMW получила многочисленные награды и признания за свои инновации, качество и экологическую ответственность. На сегодняшний день BMW является одной из самых ценимых автомобильных марок в мире, стабильно входя в топ мировых брендов по нескольким критериям: от дизайна до технологичности и устойчивости.</p>
+
+        <p>Кроме того, BMW активно поддерживает спортивные и культурные мероприятия, становясь партнером различных крупных событий, таких как Олимпийские игры, чемпионаты по автоспорту и другие международные проекты. В компании считают, что такие инициативы способствуют продвижению ценностей инноваций, силы духа и командной работы.</p>
+
+        <h3>Глобальная сеть</h3>
+        <p>BMW имеет более 30 производственных предприятий и более 140 торговых представительств по всему миру. Все автомобили BMW, от седанов до внедорожников, производятся с использованием самых современных технологий и по высочайшим стандартам качества. Каждое производство оснащено высокотехнологичным оборудованием, что позволяет выпускать автомобили, которые отвечают всем мировым требованиям безопасности и надежности.</p>
+
+        <p>Сегодня BMW работает в тесном сотрудничестве с партнерами по всему миру, чтобы создавать не только качественные автомобили, но и экологически чистые решения для городского транспорта. Компания активно работает над расширением сети зарядных станций для электромобилей, а также ведет разработки по улучшению инфраструктуры для более комфортного и безопасного использования электрических автомобилей.</p>
+    </div>
+</div>    <!-- Контакты -->
+    <div id="contacts" class="page hidden">
+        <div class="container">
+            <h2>Контактная информация</h2>
+            <p><strong>Адрес:</strong> г. Алматы, проспект Аль-Фараби, 100</p>
+            <p><strong>Телефон:</strong> +7 (727) 123-4567</p>
+            <p><strong>Email:</strong> info@bmw.kz</p>
+        </div>
+    </div>
+
+    <!-- Popup для кнопки "Купить" -->
+    <div id="overlay" class="overlay">
+        <div class="popup">
+            <h2>Вы выбрали автомобиль!</h2>
+            <p>Благодарим за ваш интерес к автомобилю. Наша команда свяжется с вами для оформления покупки.</p>
+            <button class="cancel" onclick="closePopup()">Закрыть</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BMW Автосалон. Все права защищены.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Скрываем все страницы
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            // Показываем выбранную страницу
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        // Открытие Popup
+        function buyCar(carName) {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        // Закрытие Popup
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Изначально показываем главную страницу
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
